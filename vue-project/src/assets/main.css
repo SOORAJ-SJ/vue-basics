@@ -1,0 +1,15 @@
+.grid {
+  display: grid;
+}
+.grid-col-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.place-items-center {
+  place-items: center;
+}
+.grid-stretch-4 {
+  grid-column: 2 / 5;
+}
+.grid-stretch-row {
+  grid-row: 1 / 3;
+}
