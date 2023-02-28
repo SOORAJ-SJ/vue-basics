@@ -2,9 +2,9 @@
     import { ref, reactive, computed } from 'vue'
     import { useVuelidate } from '@vuelidate/core'
     import { required } from '@vuelidate/validators'
-    import { authenticate } from '../api/auth'
-    import { toast } from 'vue3-toastify'
+    import { authUser } from '../stores/authUser'
 
+    const store = authUser()
     let loading = ref(false)
     const loginForm = reactive({
         username: "",
@@ -22,21 +22,14 @@
 
 
     async function handleSubmit() {
-        const result = await v$.value.$validate();
-        if (!result)
-            return;
+        const result = await v$.value.$validate()
+        if (!result) return
         try {
-            loading.value = true;
-            const auth = await authenticate(loginForm);
-            loading.value = false;
-            console.log(auth);
-        }
-        catch (err) {
-            loading.value = false;
-            toast('Invalid credentials', { 
-                position: toast.POSITION.BOTTOM_RIGHT, 
-                type: toast.TYPE.ERROR 
-            })
+            loading.value = true
+            await store.authenticateUser(loginForm)
+            loading.value = false
+        } catch (err) {
+            loading.value = false
         }
     }
 </script>
@@ -46,16 +39,18 @@
         <div class="form">
             <div class="form-group">
                 <label for="username">
-                    <input type="text" id="username" name="username" v-model="loginForm.username">
+                    Username
                 </label>
+                <input type="text" id="username" name="username" v-model="loginForm.username">
                 <div v-if="v$.username.$error">
                     Username is required
                 </div>
             </div>
             <div class="form-group">
                 <label for="password">
-                    <input type="password" id="password" name="password" v-model="loginForm.password">
+                    Password
                 </label>
+                <input type="password" id="password" name="password" v-model="loginForm.password">
                 <div v-if="v$.password.$error">
                     Password is required
                 </div>
@@ -66,3 +61,7 @@
         </div>
     </form>
 </template>
+
+<style scoped>
+    
+</style>
