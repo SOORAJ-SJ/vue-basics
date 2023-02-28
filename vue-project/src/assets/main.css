@@ -1,15 +1,156 @@
+@import './base.css';
+
+body {
+  background-color: var(--background);
+  padding: 0;
+  margin: 0;
+}
+
+/* display */
+.flex {
+  display: flex;
+}
 .grid {
   display: grid;
 }
-.grid-col-4 {
-  grid-template-columns: repeat(4, 1fr);
+.block {
+  display: block;
 }
+
+/* grid properties */
 .place-items-center {
   place-items: center;
 }
-.grid-stretch-4 {
-  grid-column: 2 / 5;
+.place-content-center {
+  place-content: center;
 }
-.grid-stretch-row {
-  grid-row: 1 / 3;
+
+/* flex properties */
+.justify-content-between {
+  justify-content: space-between;
+}
+.align-items-center {
+  align-items: center;
+}
+
+/* margins */
+.m-auto {
+  margin: auto;
+}
+.m-0 {
+  margin: 0;
+}
+.m-1 {
+  margin: 0.25em;
+}
+.m-2 {
+  margin: 0.5em;
+}
+.ms-1 {
+  margin-left: 0.25em;
+}
+.ms-2 {
+  margin-left: 0.5em;
+}
+.my-1 {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+.my-2 {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.me-2 {
+  margin-right: 0.5em;
+}
+
+/* paddings */
+.p-2 {
+  padding: 0.5em;
+}
+.p-4 {
+  padding: 1.5em;
+}
+.px-2 {
+  padding-inline: 0.5em;
+}
+.px-3 {
+  padding-inline: 1em;
+}
+.px-4 {
+  padding-inline: 1.5em;
+}
+.pb-4 {
+  padding-bottom: 1.5em;
+}
+
+/* heights */
+.vh-full {
+  min-height: 100dvh;
+  min-height: 100vh;
+}
+
+/* text decorations */
+.text-warn {
+  color: var(--primary)
+}
+.text-center {
+  text-align: center;
+}
+.td-underline {
+  text-decoration: underline;
+}
+
+
+.form-group {
+  margin-bottom: 0.5em;
+}
+.form-group label {
+  display: block;
+  font-size: 1.1rem;
+}
+.form-group input {
+  padding: 0.5em;
+  width: calc(100% - 1em);
+  border-top: 2.5px inset white;
+  border-left: 2.5px inset white;
+  border-right: 2.5px inset transparent;
+  border-bottom: 2.5px inset transparent;
+}
+.form-group input:focus-visible {
+  outline: none;
+  border-right: 2.5px inset gray;
+  border-bottom: 2.5px inset gray;
+}
+button {
+  font-family: inherit;
+  padding: 0.5em 1em;
+  border-top: 2.5px inset white;
+  border-left: 2.5px inset white;
+  border-right: 2.5px inset transparent;
+  border-bottom: 2.5px inset transparent;
+}
+button:is(:hover, :focus):not(:disabled) {
+  border-right: 2.5px inset gray;
+  border-bottom: 2.5px inset gray;
+}
+button:active:not(:disabled) {
+  border-top: 2.5px inset rgb(233, 233, 233);
+  border-left: 2.5px inset rgb(233, 233, 233);
+  border-right: 2.5px inset white;
+  border-bottom: 2.5px inset white;
+}
+
+/* card styles */
+.card {
+  padding: 1.5em;
+}
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 0.25em;
+}
+.card-body {
+  text-indent: 25px;
 }
